@@ -75,6 +75,7 @@ if ($is_me) {
     <meta charset="UTF-8">
     <title>Profil de <?php echo htmlspecialchars($user['username']); ?> - E-Chronos</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -87,8 +88,6 @@ if ($is_me) {
 
         <section class="profile-header">
             <div class="profile-card">
-                <?php 
-                ?>
                 <?php if(!empty($user['photo'])): ?>
                     <img src="uploads/<?php echo $user['photo']; ?>" class="profile-pic">
                 <?php else: ?>
@@ -135,7 +134,9 @@ if ($is_me) {
                             <a href="detail.php?id=<?php echo $art['id']; ?>" class="btn-detail">Voir</a>
                             
                             <?php if($is_me): ?>
-                                <a href="edit.php?id=<?php echo $art['id']; ?>" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+                                <a href="edit.php?id=<?php echo $art['id']; ?>" class="btn-edit" title="Modifier">
+                                    <i class="fa-solid fa-pen"></i>
+                                </a>
                             <?php endif; ?>
                         </div>
                     <?php endwhile; ?>

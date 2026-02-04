@@ -18,6 +18,9 @@ if (session_status() === PHP_SESSION_NONE) {
                     <li><a href="vente.php">Vendre</a></li>
                     <li><a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> Panier</a></li>
                     <li><a href="account.php">Mon Compte</a></li>
+                    <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'ADMIN'): ?>
+                        <li><a href="admin/index.php" style="color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 4px;">ADMIN</a></li>
+                    <?php endif; ?>
                     <li><a href="logout.php" style="color: #ff6b6b;">Déconnexion</a></li>
                 
                 <?php else: ?>

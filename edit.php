@@ -56,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $update_art = "UPDATE articles SET nom='$nom', description='$description', prix='$prix' $sql_update_img WHERE id=$article_id";
-    
     $update_stock = "UPDATE stock SET nombre=$new_stock WHERE article_id=$article_id";
 
     if ($mysqli->query($update_art) && $mysqli->query($update_stock)) {
@@ -84,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include 'includes/header.php'; ?>
 
-    <main class="auth-page">
+    <main class="auth-page" style="min-height: auto; padding: 50px 0;">
         <div class="auth-container" style="max-width: 600px;">
             <h1>Modifier l'article</h1>
             
