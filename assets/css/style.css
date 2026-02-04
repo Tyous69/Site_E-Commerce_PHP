@@ -12,7 +12,6 @@ body {
     color: var(--white);
     margin: 0;
     padding: 0;
-    /* On enlève le display: flex d'ici ! */
 }
 
 /* --- Classe pour centrer Login et Register --- */
@@ -22,8 +21,6 @@ body {
     align-items: center;
     min-height: 100vh;
 }
-
-/* Garde le reste de ton code (header, cards, etc.) inchangé */
 
 /* Conteneur Formulaire */
 .auth-container, .register-container {
@@ -52,7 +49,7 @@ input {
     background: #1a1a1a;
     color: white;
     border-radius: 4px;
-    box-sizing: border-box; /* Important pour le padding */
+    box-sizing: border-box;
 }
 
 input:focus {
@@ -95,20 +92,19 @@ a:hover {
     margin-bottom: 15px;
 }
 
-/* Positionnement de l'icône oeil */
 .password-field {
     position: relative;
     width: 100%;
 }
 
 .password-field input {
-    padding-right: 45px; /* Laisse de la place pour l'icône */
+    padding-right: 45px;
 }
 
 .toggle-password {
     position: absolute;
     right: 15px;
-    top: 15px; /* Ajuste selon ton padding d'input */
+    top: 15px;
     cursor: pointer;
     color: var(--gold);
     transition: 0.3s;
@@ -118,9 +114,9 @@ a:hover {
     color: var(--white);
 }
 
-/* --- Header Doré --- */
+/* --- Header Doré FLUIDE --- */
 .main-header {
-    background-color: var(--gold); /* Fond jaune/doré pour faire ressortir le logo noir */
+    background-color: var(--gold);
     padding: 10px 0;
     width: 100%;
     position: sticky;
@@ -133,30 +129,101 @@ a:hover {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espace entre Logo et Menu */
     align-items: center;
     padding: 0 20px;
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+}
+
+.logo {
+    flex-shrink: 0; /* Le logo ne s'écrase pas trop */
+    margin-right: 20px;
 }
 
 .logo img {
-    height: 50px; /* Ajuste selon tes préférences */
+    height: 50px;
+    transition: height 0.3s ease; /* Animation fluide si ça change */
+}
+
+nav {
+    flex-shrink: 1; /* Le menu peut rétrécir */
+    min-width: 0; /* Permet au flex de rétrécir en dessous du contenu min */
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Espace standard */
     margin: 0;
+    padding: 0;
+    flex-wrap: nowrap; /* Force tout sur une ligne */
+    align-items: center;
+}
+
+nav ul li {
+    white-space: nowrap; /* Empêche le texte "Mon Compte" de se couper en deux */
 }
 
 nav ul li a {
-    color: var(--dark) !important; /* Texte noir sur fond doré */
+    color: var(--dark) !important;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 0.9rem;
+    transition: font-size 0.3s ease; /* Transition fluide */
 }
 
-/* --- Grille d'articles --- */
+/* Styles spécifiques ajoutés dans le PHP pour Admin et Logout */
+.admin-link {
+    color: var(--gold) !important; /* Force la couleur or même sur fond or (via bordure) */
+    background: var(--dark);
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--dark);
+}
+
+.logout-link {
+    color: #b71c1c !important; /* Rouge foncé pour être lisible sur du doré */
+}
+
+
+/* --- RESPONSIVITÉ FLUIDE (Sans Menu Hamburger) --- */
+
+/* Pour les tablettes et petits écrans (en dessous de 900px) */
+@media (max-width: 900px) {
+    .header-container {
+        padding: 0 10px; /* On réduit les marges extérieures */
+    }
+    nav ul {
+        gap: 10px; /* On réduit l'espace entre les liens */
+    }
+    nav ul li a {
+        font-size: 0.8rem; /* On réduit un peu la police */
+    }
+    .logo img {
+        height: 40px; /* Le logo réduit un peu */
+    }
+}
+
+/* Pour les mobiles (en dessous de 600px) */
+@media (max-width: 600px) {
+    nav ul {
+        gap: 5px; /* Espace minimal */
+    }
+    nav ul li a {
+        font-size: 0.65rem; /* Police très petite pour tout faire tenir */
+        padding: 2px;
+    }
+    .logo img {
+        height: 30px; /* Logo petit */
+        margin-right: 5px;
+    }
+    
+    /* On cache l'icône panier pour gagner de la place, on garde juste le mot ? 
+       Ou inversement. Ici on réduit juste la taille. */
+}
+
+
+/* --- Reste du site (Grilles, Cartes, etc.) --- */
 .home-content {
     max-width: 1200px;
     margin: 40px auto;
@@ -225,12 +292,11 @@ nav ul li a {
     display: flex;
     gap: 50px;
     padding: 20px;
-    background: #252525; /* Fond carte légère */
+    background: #252525;
     border-radius: 8px;
     border: 1px solid #333;
 }
 
-/* Image */
 .detail-image {
     flex: 1;
 }
@@ -241,10 +307,9 @@ nav ul li a {
     border: 1px solid var(--gold);
     max-height: 500px;
     object-fit: contain;
-    background: #fff; /* Fond blanc pour bien voir la montre */
+    background: #fff;
 }
 
-/* Infos */
 .detail-info {
     flex: 1;
     display: flex;
@@ -293,17 +358,16 @@ nav ul li a {
 .in-stock { color: #4CAF50; }
 .out-stock { color: #ff4d4d; }
 
-/* Formulaire Panier */
 .add-cart-form {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin-top: auto; /* Pousse le bouton vers le bas */
+    margin-top: auto;
 }
 
 .add-cart-form input {
     width: 70px;
-    margin-bottom: 0; /* Override du style global */
+    margin-bottom: 0;
 }
 
 .btn-add {
@@ -321,13 +385,6 @@ nav ul li a {
     color: #4CAF50;
     font-weight: bold;
     margin-bottom: 15px;
-}
-
-/* Responsive Mobile */
-@media (max-width: 768px) {
-    .detail-container {
-        flex-direction: column;
-    }
 }
 
 /* --- Page Panier --- */
@@ -353,7 +410,6 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
-/* Tableau */
 .cart-table {
     width: 100%;
     border-collapse: collapse;
@@ -374,7 +430,6 @@ nav ul li a {
     vertical-align: middle;
 }
 
-/* Infos Article (Image + Nom) */
 .item-info {
     display: flex;
     align-items: center;
@@ -389,7 +444,6 @@ nav ul li a {
     border: 1px solid #444;
 }
 
-/* Formulaire Quantité */
 .qty-form {
     display: flex;
     align-items: center;
@@ -436,7 +490,6 @@ nav ul li a {
     color: var(--gold);
 }
 
-/* Résumé et Boutons */
 .cart-summary {
     text-align: right;
     margin-top: 20px;
@@ -472,7 +525,7 @@ nav ul li a {
     padding: 50px;
     color: #aaa;
     font-size: 1.2rem;
-}   
+}
 
 /* --- Page Confirmation --- */
 .order-summary {
@@ -490,7 +543,7 @@ nav ul li a {
 }
 
 .btn-confirm {
-    background-color: #4CAF50; /* Vert pour valider */
+    background-color: #4CAF50;
     color: white;
     font-size: 1.2rem;
     margin-top: 20px;
@@ -510,7 +563,6 @@ nav ul li a {
     gap: 40px;
 }
 
-/* En-tête Profil */
 .profile-header {
     display: flex;
     justify-content: center;
@@ -561,7 +613,6 @@ nav ul li a {
     letter-spacing: 1px;
 }
 
-/* Zone Solde et Ajout Argent */
 .balance-box {
     background: #1a1a1a;
     padding: 15px;
@@ -594,7 +645,6 @@ nav ul li a {
     padding: 8px 15px;
 }
 
-/* Formulaire édition */
 .edit-section {
     text-align: left;
     margin-top: 20px;
@@ -608,7 +658,6 @@ nav ul li a {
     padding-left: 0;
 }
 
-/* Tableaux Factures */
 .invoice-table {
     width: 100%;
     border-collapse: collapse;
@@ -631,14 +680,20 @@ nav ul li a {
 .btn-edit {
     display: inline-block;
     background: #333;
-    color: white;
-    padding: 5px 10px;
+    color: white !important;
+    padding: 8px 12px;
     border-radius: 4px;
     margin-left: 5px;
+    transition: 0.3s;
+    border: 1px solid #444;
 }
-.btn-edit:hover { background: var(--gold); color: black; }
 
-/* Bannières alertes */
+.btn-edit:hover {
+    background: var(--gold);
+    color: var(--dark) !important;
+    border-color: var(--gold);
+}
+
 .success-banner {
     background: rgba(76, 175, 80, 0.2);
     color: #4CAF50;
@@ -655,4 +710,11 @@ nav ul li a {
     text-align: center;
     border-radius: 4px;
     border: 1px solid #ff4d4d;
+}
+
+/* Responsivité de la page détail et grille sur mobile */
+@media (max-width: 768px) {
+    .detail-container {
+        flex-direction: column;
+    }
 }
