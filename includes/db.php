@@ -2,6 +2,8 @@
 
 $host = "localhost";
 $user = "root";
+$password = ""; 
+$database = "php_exam_db";
 
 $mysqli = new mysqli($host, $user, $password, $database);
 
