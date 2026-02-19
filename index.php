@@ -6,6 +6,7 @@ include 'includes/db.php';
 <head>
     <meta charset="UTF-8">
     <title>E-Chronos - Excellence Horlogère</title>
+    <link rel="icon" type="image/png" href="E-Chronos_Logo_Blanc.png">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
